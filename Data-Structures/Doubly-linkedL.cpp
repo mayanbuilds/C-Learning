@@ -5,6 +5,7 @@ class Node {
 public:
    int data;
    Node* Next;
+   Node* prev;
 };
 
 int main() {
@@ -21,10 +22,22 @@ int main() {
     n3.Next=&n4;
     n4.Next=nullptr;
     
+    
+    n4.prev=&n3;
+    n3.prev=&n2;
+    n2.prev=&n1;
+    n1.prev=nullptr;
+    
     Node* Current=&n1;
     while(Current!=nullptr){
         cout<<Current->data<<" -> ";
         Current=Current->Next;
+    }
+    cout<<" "<<endl;
+    Node* previous=&n4;
+    while(previous!=nullptr){
+        cout<<previous->data<<" <-> ";
+        previous=previous->prev;
     }
     
     
